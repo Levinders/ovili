@@ -7,48 +7,42 @@
     body {
       margin: 0;
       padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       height: 100vh;
-      background-color: #f9f9f9;
+      width: 100vw;
+      overflow: hidden;
     }
     img {
       cursor: pointer;
-      max-width: 90%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      transition: transform 0.2s ease;
-    }
-    img:hover {
-      transform: scale(1.02);
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Ensures the image covers full area */
     }
   </style>
-  <!-- Google Analytics gtag.js (replace G-XXXXXXXXXX with your own ID) -->
+
+  <!-- Google Analytics (GA4) Tag -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-M32JKRS45P'); // Replace with your GA Measurement ID
+    gtag('config', 'G-M32JKRS45P');
   </script>
 </head>
 <body>
-  <!-- Clickable Image -->
+  <!-- Fullscreen Clickable Image -->
   <img src="https://raw.githubusercontent.com/Levinders/Portfolio-Hub-Looker-Studio-Portfolio-Page-/refs/heads/main/ovili-landing-view.png" 
        alt="Portfolio Landing" 
        id="redirectImage">
 
   <script>
     document.getElementById('redirectImage').addEventListener('click', function() {
-      // Track GA event
+      // Fire GA event
       gtag('event', 'image_click', {
         event_category: 'engagement',
         event_label: 'Landing Page Image'
       });
 
-      // Redirect after a short delay to ensure GA event is sent
+      // Redirect shortly after to allow GA to capture event
       setTimeout(function() {
         window.location.href = "https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
       }, 300);
