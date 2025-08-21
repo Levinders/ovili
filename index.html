@@ -1,38 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Dashboard | Looker Studio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Looker Studio Report</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
+  <!-- Google Analytics (example GA4 tag, replace with your own ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-M32JKRS45P');
+
+    // Replace with your GA ID
+    gtag('config', 'G-XXXXXXXXXX');
   </script>
 
   <style>
-    body, html {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
       font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
+
+    .report-container {
+      width: 90%;
+      max-width: 1200px;
+      height: 80vh;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #fff;
+    }
+
     iframe {
-      border: none;
       width: 100%;
       height: 100%;
+      border: none;
     }
   </style>
 </head>
 <body>
-  <!-- Embedded Looker Studio Report -->
-  <iframe 
-    src="https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF" 
-    allowfullscreen>
-  </iframe>
+  <!-- Report embed -->
+  <div class="report-container">
+    <iframe 
+      src="https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF" 
+      allowfullscreen 
+      sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
+    </iframe>
+  </div>
 </body>
 </html>
