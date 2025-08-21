@@ -1,41 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Ovili Ekene</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Click to View Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000; /* matches image background for seamless look */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .clickable-image {
+      cursor: pointer;
+      max-width: 90%;
+      max-height: 90vh;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      border-radius: 8px;
+    }
+  </style>
+
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag(){ dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-M32JKRS45P'); // Replace with your GA ID
+    gtag('config', 'G-M32JKRS45P');
 
     function trackAndRedirect() {
-      gtag('event', 'looker_report_click', {
+      gtag('event', 'looker_redirect_click', {
         event_category: 'Engagement',
-        event_label: 'Looker Studio Report',
-        event_callback: function() {
-          // Redirect after GA sends
-          window.location.href = "https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
-        }
+        event_label: 'Looker Studio Report'
       });
-
-      // Backup redirect if callback doesn’t fire (after 1s)
+      
+      // Redirect once GA event is sent (short delay)
       setTimeout(function() {
         window.location.href = "https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
-      }, 1000);
+      }, 500);
     }
   </script>
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:#f9f9f9;">
-  
-  <!-- Full clickable image -->
-  <img 
-    src="https://raw.githubusercontent.com/Levinders/Portfolio-Hub-Looker-Studio-Portfolio-Page-/refs/heads/main/ovili-landing-view.png" 
-    alt="Open Report" 
-    style="cursor:pointer;max-width:500px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1);"
+<body>
+  <img
+    src="https://raw.githubusercontent.com/Levinders/Portfolio-Hub-Looker-Studio-Portfolio-Page-/refs/heads/main/ovili-landing-view.png"
+    alt="Click to view dashboard"
+    class="clickable-image"
     onclick="trackAndRedirect()"
-  >
-
+  />
 </body>
 </html>
