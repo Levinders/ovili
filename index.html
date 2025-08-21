@@ -3,47 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirect with GA Tracking</title>
+  <title>Clickable Image Redirect</title>
   <style>
     body {
       margin: 0;
-      background-color: black; /* background for unused screen space */
+      background-color: black; /* full black background */
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* full viewport */
+      height: 100vh; /* make body full screen */
     }
-    img {
-      max-width: 100%;   /* responsive scaling */
-      height: auto;
+
+    .clickable-image {
+      max-width: 100%;
+      max-height: 100%;
       cursor: pointer;
+      display: block;
     }
   </style>
-  <!-- Google Analytics (replace with your GA tag if needed) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-M32JKRS45P'); // <-- replace with your GA ID
-  </script>
 </head>
 <body>
-  <img src="https://raw.githubusercontent.com/Levinders/Portfolio-Hub-Looker-Studio-Portfolio-Page-/refs/heads/main/ovili-landing-view%20(2).png" alt="Landing View" id="clickImage">
+  <!-- Replace with your new image link -->
+  <img src="https://raw.githubusercontent.com/Levinders/Portfolio-Hub-Looker-Studio-Portfolio-Page-/refs/heads/main/ovili-landing-view%20(2).png"
+       alt="Landing View"
+       class="clickable-image"
+       onclick="handleClick()" />
 
   <script>
-    document.getElementById("clickImage").addEventListener("click", function() {
-      // Track GA event
-      gtag('event', 'click', {
-        'event_category': 'Redirect',
-        'event_label': 'Image Click to Looker Studio'
-      });
+    function handleClick() {
+      // GA event tracking (replace with your GA event function if different)
+      if (typeof gtag === "function") {
+        gtag('event', 'click', {
+          'event_category': 'Image',
+          'event_label': 'Landing Image Click'
+        });
+      }
 
-      // Small delay to ensure GA event fires before redirect
-      setTimeout(function() {
+      // Redirect after short delay so GA fires
+      setTimeout(function () {
         window.location.href = "https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
       }, 300);
-    });
+    }
   </script>
 </body>
 </html>
