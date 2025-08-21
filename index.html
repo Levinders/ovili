@@ -6,32 +6,32 @@
   <title>Redirecting...</title>
   
   <!-- Google Analytics (GA4) Tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-M32JKRS45P');
 
-    gtag('config', 'G-M32JKRS45P');
-
-    // Fire a custom event and then redirect
-    window.onload = function() {
-      gtag('event', 'page_redirect', {
-        'event_category': 'Navigation',
-        'event_label': 'Looker Studio Redirect',
-        'send_to': 'G-M32JKRS45P',
-        'event_callback': function() {
-          // Redirect after GA confirms hit
-          window.location.href = "https://lookerstudio.google.com/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
-        }
-      });
-
-      // Fallback in case callback fails
-      setTimeout(function() {
+  window.onload = function() {
+    gtag('event', 'page_redirect', {
+      'event_category': 'Navigation',
+      'event_label': 'Looker Studio Redirect'
+    }, {
+      'event_callback': function() {
         window.location.href = "https://lookerstudio.google.com/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
-      }, 2000);
-    };
-  </script>
+      },
+      'event_timeout': 2000
+    });
+
+    // Fallback (just in case)
+    setTimeout(function() {
+      window.location.href = "https://lookerstudio.google.com/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
+    }, 2500);
+  };
+</script>
+
+  
 </head>
 <body style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
   <h2>Redirecting you to the dashboard...</h2>
