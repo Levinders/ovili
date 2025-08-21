@@ -2,38 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
-  
-  <!-- Google Analytics (GA4) Tag -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ dataLayer.push(arguments); }
-  gtag('js', new Date());
-  gtag('config', 'G-M32JKRS45P');
+  <title>Analytics Redirect</title>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-M32JKRS45P"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-M32JKRS45P'); // Replace with your GA ID
 
-  window.onload = function() {
-    gtag('event', 'page_redirect', {
-      'event_category': 'Navigation',
-      'event_label': 'Looker Studio Redirect'
-    }, {
-      'event_callback': function() {
-        window.location.href = "https://lookerstudio.google.com/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
-      },
-      'event_timeout': 2000
-    });
+    function trackAndRedirect() {
+      gtag('event', 'looker_report_click', {
+        event_category: 'Engagement',
+        event_label: 'Looker Studio Report',
+        event_callback: function() {
+          // Redirect after GA sends
+          window.location.href = "https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
+        }
+      });
 
-    // Fallback (just in case)
-    setTimeout(function() {
-      window.location.href = "https://lookerstudio.google.com/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
-    }, 2500);
-  };
-</script>
-
-  
+      // Backup redirect if callback doesn’t fire (after 1s)
+      setTimeout(function() {
+        window.location.href = "https://lookerstudio.google.com/embed/reporting/11df476a-3348-4f90-af37-a1bfb1fc4d2d/page/xROUF";
+      }, 1000);
+    }
+  </script>
 </head>
-<body style="display:flex;justify-content:center;align-items:center;height:100vh;font-family:sans-serif;">
-  <h2>Redirecting you to the dashboard...</h2>
+<body style="display:flex;justify-content:center;align-items:center;height:100vh;background:#f9f9f9;">
+  
+  <!-- Full clickable image -->
+  <img 
+    src="https://raw.githubusercontent.com/Levinders/Portfolio-Hub-Looker-Studio-Portfolio-Page-/refs/heads/main/ovili-landing-view.png" 
+    alt="Open Report" 
+    style="cursor:pointer;max-width:500px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,0.1);"
+    onclick="trackAndRedirect()"
+  >
+
 </body>
 </html>
